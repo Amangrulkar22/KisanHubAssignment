@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  KisanHubAssignment
+
+  Created by Ashwinkumar Mangrulkar on 10/08/18.
+  Copyright © 2018 Ashwinkumar Mangrulkar. All rights reserved.
+*/
+
+"ALERT_TITLE" = "KisanHub";
+"ALERT_SERVER_ERROR" = "Server error";
+"ALERT_RESPONSE_ERROR" = "Response error";

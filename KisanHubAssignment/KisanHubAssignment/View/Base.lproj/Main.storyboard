@@ -143,14 +143,29 @@
                     <view key="view" contentMode="scaleToFill" id="KeE-Vi-CjY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzk-X1-mXI" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pzk-X1-mXI" firstAttribute="trailing" secondItem="TkT-1m-doq" secondAttribute="trailing" id="6lG-et-EhP"/>
+                            <constraint firstItem="Pzk-X1-mXI" firstAttribute="bottom" secondItem="TkT-1m-doq" secondAttribute="bottom" id="LA9-zc-mdE"/>
+                            <constraint firstItem="Pzk-X1-mXI" firstAttribute="top" secondItem="TkT-1m-doq" secondAttribute="top" id="YVM-YG-NXL"/>
+                            <constraint firstItem="Pzk-X1-mXI" firstAttribute="leading" secondItem="TkT-1m-doq" secondAttribute="leading" id="hyb-Qt-7Yg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="TkT-1m-doq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="wS3-nr-89P"/>
+                    <connections>
+                        <outlet property="mapView" destination="Pzk-X1-mXI" id="NMq-1H-UDg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mO-HR-dtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="-581"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="-581.55922038980509"/>
         </scene>
         <!--Article-->
         <scene sceneID="eqc-pn-KPw">
