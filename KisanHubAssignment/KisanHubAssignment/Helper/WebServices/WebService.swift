@@ -13,7 +13,7 @@ import Reachability
 class WebService {
     
     static let sharedInstance = WebService()
-    
+
     /// Function to check Imternet Connection available or not
     ///
     /// - Returns: return bool value
@@ -40,11 +40,8 @@ class WebService {
             CompletionHandler(false, nil, nil)
             return
         }
-
-        print("url \(Url_Google_Map)")
         
-//        Alamofire.request(Url_Google_Map, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response) in
-        Alamofire.request(Url_Google_Map).responseJSON { (response) in
+        Alamofire.request("https://s3.eu-west-2.amazonaws.com/interview-question-data/farm/farms.json").responseJSON { (response) in
             if let JSON = response.result.value {
                 CompletionHandler(true, JSON as AnyObject?,response.result.error as NSError?)
             }else

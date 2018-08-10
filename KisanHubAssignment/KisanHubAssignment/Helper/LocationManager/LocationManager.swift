@@ -25,6 +25,9 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     /// delegate object to call protocol method
     var delegate: LocationProtocol?
     
+    private(set) var latitude: Double?
+    private(set) var longitude: Double?
+    
     /// Initialization
     override init() {
         super.init()
@@ -41,8 +44,18 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         
         delegate?.udpatedLocation(location: location!)
         
+        latitude = location?.coordinate.latitude
+        longitude = location?.coordinate.longitude
+        
         //Finally stop updating location otherwise it will come again and again in this delegate
         self.locationManager.stopUpdatingLocation()
+    }
+    
+    /// Get user current location
+    ///
+    /// - Returns: CLLocation object
+    func getCurrentLocation() -> CLLocation {
+        return CLLocation(latitude: latitude!, longitude: longitude!)
     }
 
 }
