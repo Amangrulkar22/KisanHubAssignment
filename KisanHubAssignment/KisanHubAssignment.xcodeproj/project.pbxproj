@@ -23,6 +23,8 @@
 		FCE43426211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCE43424211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld */; };
 		FCE43428211CC2F00046790A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE43427211CC2F00046790A /* Assets.xcassets */; };
 		FCE4342B211CC2F00046790A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE43429211CC2F00046790A /* LaunchScreen.storyboard */; };
+		FCE6B018211F0E2A009612EE /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */; };
+		FCE6B01B211F113E009612EE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6B01A211F113E009612EE /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		FCE43427211CC2F00046790A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE4342A211CC2F00046790A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCE4342C211CC2F00046790A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		FCE6B01A211F113E009612EE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				FCE43421211CC2EE0046790A /* Main.storyboard */,
+				FCE6B016211F0DE5009612EE /* Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -108,6 +113,7 @@
 		A0AF0005211D7342004461A9 /* Custom Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FCE6B019211F112B009612EE /* CardView */,
 				A0AF0012211D8102004461A9 /* CustomAlertView */,
 			);
 			path = "Custom Classes";
@@ -189,6 +195,22 @@
 				FCE43424211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld */,
 			);
 			path = KisanHubAssignment;
+			sourceTree = "<group>";
+		};
+		FCE6B016211F0DE5009612EE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		FCE6B019211F112B009612EE /* CardView */ = {
+			isa = PBXGroup;
+			children = (
+				FCE6B01A211F113E009612EE /* CardView.swift */,
+			);
+			path = CardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,8 +353,10 @@
 				FCE43420211CC2EE0046790A /* ContentVC.swift in Sources */,
 				A0AF000F211D7C6A004461A9 /* MapVC.swift in Sources */,
 				FCE43426211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld in Sources */,
+				FCE6B018211F0E2A009612EE /* ArticleTableViewCell.swift in Sources */,
 				A0AF0011211D7C84004461A9 /* ArticleVC.swift in Sources */,
 				A0AF000D211D7C29004461A9 /* RegionClimateVC.swift in Sources */,
+				FCE6B01B211F113E009612EE /* CardView.swift in Sources */,
 				FCE4341E211CC2EE0046790A /* AppDelegate.swift in Sources */,
 				A0AF001D211D9210004461A9 /* MapModel.swift in Sources */,
 				A0AF0014211D8103004461A9 /* CustomAlertView.swift in Sources */,

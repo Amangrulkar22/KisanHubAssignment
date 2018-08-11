@@ -15,18 +15,48 @@ class MapVC: UIViewController {
     /// Mapview object
     @IBOutlet weak var mapView: GMSMapView!
     
+    /// Button select option object
+    @IBOutlet weak var btnSelectOption: UIButton!
+    
     /// Create map model object
     var mapModel = MapModel()
+    
+    var jsonGlobalObject: [AnyObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        btnSelectOption.isEnabled = false
         
         mapView.isMyLocationEnabled = true
         LocationManager.sharedInstance.delegate = self
         
         webServiceGetMapData()
+    }
+    
+    @IBAction func selectOptionAction(_ sender: Any) {
+        showActionSheet()
+    }
+    
+    
+    /// Show action sheet for iPhone
+    func showActionSheet()
+    {
+        let actionSheet = UIAlertController(title: "Choose Option", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        actionSheet.popoverPresentationController?.sourceView = self.view
+        
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Geometry Marker", comment: ""), style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.drawGeometryMarker(json: self.jsonGlobalObject!)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Polygon", comment: ""), style: UIAlertActionStyle.default, handler: { (alert:UIAlertAction!) -> Void in
+            self.drawPolygon(json: self.jsonGlobalObject!)
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: UIAlertActionStyle.cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
     }
     
     /// Webservice call to get data and display on map
@@ -50,9 +80,12 @@ class MapVC: UIViewController {
             
             //            print("Response json: \(json)")
             
+            self.btnSelectOption.isEnabled = true
+            
             if let jsonArray = json as? [AnyObject] {
-                self.drawGeometryMarker(json: jsonArray)
-                self.drawPolygon(json: jsonArray)
+                self.jsonGlobalObject = jsonArray
+                self.drawGeometryMarker(json: self.jsonGlobalObject!)
+                //self.drawPolygon(json: jsonArray)
             }
             
         }
@@ -70,7 +103,7 @@ class MapVC: UIViewController {
                 if let farmsArray = farmsDict.value(forKey: "farms") as? [AnyObject] {
                     for farms in farmsArray {
                         
-                        self.mapView.camera = GMSCameraPosition.camera(withLatitude: farms.value(forKeyPath: "properties.farm_latitude") as! Double, longitude: farms.value(forKeyPath: "properties.farm_longitude") as! Double, zoom: 7.5)
+                        self.mapView.camera = GMSCameraPosition.camera(withLatitude: farms.value(forKeyPath: "properties.farm_latitude") as! Double, longitude: farms.value(forKeyPath: "properties.farm_longitude") as! Double, zoom: 7.8)
                         
                         DispatchQueue.main.async
                             {
@@ -80,10 +113,12 @@ class MapVC: UIViewController {
                                 marker.map = self.mapView
                                 marker.title = farms.value(forKeyPath: "properties.farm_name") as? String
                                 bounds = bounds.includingCoordinate(marker.position)
+                                
+                                let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
+                                self.mapView.animate(with: update)
+
                         }
                         
-                        let update = GMSCameraUpdate.fit(bounds, withPadding: 100)
-                        mapView.animate(with: update)
                     }
                 }
             }
@@ -94,7 +129,6 @@ class MapVC: UIViewController {
     ///
     /// - Parameter json: json object
     func drawPolygon(json: [AnyObject]) {
-        
         if json.count > 0 {
             
             if let fieldsDict = json[0] as? NSDictionary {
@@ -103,24 +137,34 @@ class MapVC: UIViewController {
                         if let geometry = fieldObject.value(forKey: "geometry") as? NSDictionary {
                             if let coordinates = geometry.value(forKey: "coordinates") as? [AnyObject] {
                                 if let points = coordinates[0] as? [AnyObject]{
-                                    if let polygon = points[0] as? [AnyObject] {
-                                        for _ in polygon {
-                                            print(polygon[0], polygon[1])
-                                            
-                                            let polygonLat = polygon[0] as! Double
-                                            let polygonLong = polygon[1] as! Double
-
-                                            let polygon = GMSPolygon()
-                                            let rect = GMSMutablePath()
-                                            rect.add(CLLocationCoordinate2DMake(polygonLat, polygonLong))
-                                            
-                                            polygon.path = rect
-                                            polygon.fillColor = UIColor(red: 0.25, green: 0, blue: 0, alpha: 0.2)
-                                            polygon.strokeColor = UIColor.black
-                                            polygon.strokeWidth = 5
-                                            polygon.map = mapView
+                                    
+                                    let polygon = GMSPolygon()
+                                    let rect = GMSMutablePath()
+                                    
+                                    if let polygons = points as? [AnyObject] {
+                                        for index in 0..<points.count {
+                                            if let values = polygons[index] as? [AnyObject] {
+                                                print(values[0], values[1])
+                                                
+                                                let polygonLat = values[0] as! Double
+                                                let polygonLong = values[1] as! Double
+                                                
+                                                
+                                                rect.add(CLLocationCoordinate2DMake(polygonLat, polygonLong))
+                                                
+                                                self.mapView.camera = GMSCameraPosition.camera(withLatitude: polygonLat, longitude: polygonLong, zoom: 10)
+                             
+                                            }
                                         }
                                     }
+                                    
+                                    
+                                    polygon.path = rect
+                                    polygon.fillColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+                                    polygon.strokeColor = UIColor.black
+                                    polygon.strokeWidth = 3
+                                    polygon.map = mapView
+                                    
                                 }
                             }
                         }

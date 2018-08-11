@@ -145,21 +145,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pzk-X1-mXI" customClass="GMSMapView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0w-ow-jKO">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" red="0.77254901960784317" green="0.82352941176470584" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="etH-vA-sug"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <state key="normal" title="Select Option">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectOptionAction:" destination="zyD-p9-xUf" eventType="touchUpInside" id="KNk-Au-OUH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Pzk-X1-mXI" firstAttribute="trailing" secondItem="TkT-1m-doq" secondAttribute="trailing" id="6lG-et-EhP"/>
-                            <constraint firstItem="Pzk-X1-mXI" firstAttribute="bottom" secondItem="TkT-1m-doq" secondAttribute="bottom" id="LA9-zc-mdE"/>
+                            <constraint firstItem="TkT-1m-doq" firstAttribute="trailing" secondItem="p0w-ow-jKO" secondAttribute="trailing" id="7Vp-ke-NmJ"/>
+                            <constraint firstItem="p0w-ow-jKO" firstAttribute="top" secondItem="Pzk-X1-mXI" secondAttribute="bottom" id="IFI-b8-QQA"/>
+                            <constraint firstItem="TkT-1m-doq" firstAttribute="bottom" secondItem="p0w-ow-jKO" secondAttribute="bottom" id="KZJ-QC-vj4"/>
                             <constraint firstItem="Pzk-X1-mXI" firstAttribute="top" secondItem="TkT-1m-doq" secondAttribute="top" id="YVM-YG-NXL"/>
                             <constraint firstItem="Pzk-X1-mXI" firstAttribute="leading" secondItem="TkT-1m-doq" secondAttribute="leading" id="hyb-Qt-7Yg"/>
+                            <constraint firstItem="p0w-ow-jKO" firstAttribute="leading" secondItem="TkT-1m-doq" secondAttribute="leading" id="olg-88-FGH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TkT-1m-doq"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="wS3-nr-89P"/>
                     <connections>
+                        <outlet property="btnSelectOption" destination="p0w-ow-jKO" id="YQH-s3-nXN"/>
                         <outlet property="mapView" destination="Pzk-X1-mXI" id="NMq-1H-UDg"/>
                     </connections>
                 </viewController>
@@ -174,14 +192,55 @@
                     <view key="view" contentMode="scaleToFill" id="uEG-Ra-cbM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k4P-LO-v1M">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="200" id="yDb-hR-H9s" customClass="ArticleTableViewCell" customModule="KisanHubAssignment" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yDb-hR-H9s" id="n45-NN-J7m">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="05c-I9-Khx" customClass="CardView" customModule="KisanHubAssignment" customModuleProvider="target">
+                                                    <rect key="frame" x="20" y="19" width="335" height="162"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="05c-I9-Khx" firstAttribute="leading" secondItem="n45-NN-J7m" secondAttribute="leadingMargin" constant="5" id="Qap-JL-JRd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="05c-I9-Khx" secondAttribute="bottom" constant="8" id="Qmp-8r-P97"/>
+                                                <constraint firstItem="05c-I9-Khx" firstAttribute="top" secondItem="n45-NN-J7m" secondAttribute="topMargin" constant="8" id="fqu-qb-ykM"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="05c-I9-Khx" secondAttribute="trailing" constant="5" id="nky-mF-s62"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="hnq-Sg-8YU" id="XsM-GQ-zJg"/>
+                                    <outlet property="delegate" destination="hnq-Sg-8YU" id="pJ6-46-KKu"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="k4P-LO-v1M" firstAttribute="leading" secondItem="eg8-k2-NXH" secondAttribute="leading" id="1kz-Y3-Hhk"/>
+                            <constraint firstItem="eg8-k2-NXH" firstAttribute="trailing" secondItem="k4P-LO-v1M" secondAttribute="trailing" id="Nyb-gm-qne"/>
+                            <constraint firstItem="eg8-k2-NXH" firstAttribute="bottom" secondItem="k4P-LO-v1M" secondAttribute="bottom" id="qt6-td-CVB"/>
+                            <constraint firstItem="k4P-LO-v1M" firstAttribute="top" secondItem="eg8-k2-NXH" secondAttribute="top" id="w38-py-3AR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eg8-k2-NXH"/>
                     </view>
                     <navigationItem key="navigationItem" title="Article" id="ILE-Eh-v3e"/>
+                    <connections>
+                        <outlet property="tableView" destination="k4P-LO-v1M" id="i2h-7j-ENh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ieL-aP-5Yb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1822" y="195"/>
+            <point key="canvasLocation" x="1821.5999999999999" y="194.75262368815595"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vDc-kJ-Mg0">

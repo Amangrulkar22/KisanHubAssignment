@@ -29,7 +29,7 @@ class WebService {
         }
     }
     
-    /// Web Servce for getting map data
+    /// WebServce call to get map data
     ///
     ///   - withCompletionHandler: Response
     func webServiceGetMapData(_ CompletionHandler:@escaping (_ success:Bool, _ responseDictionary:AnyObject?, _ error:NSError?)->Void)
@@ -42,6 +42,28 @@ class WebService {
         }
         
         Alamofire.request("https://s3.eu-west-2.amazonaws.com/interview-question-data/farm/farms.json").responseJSON { (response) in
+            if let JSON = response.result.value {
+                CompletionHandler(true, JSON as AnyObject?,response.result.error as NSError?)
+            }else
+            {
+                CompletionHandler(false, nil,response.result.error as NSError?)
+            }
+        }
+    }
+    
+    /// WebServce call to get article data
+    ///
+    ///   - withCompletionHandler: Response
+    func webServiceGetArticles(_ CompletionHandler:@escaping (_ success:Bool, _ responseDictionary:AnyObject?, _ error:NSError?)->Void)
+    {
+        //--Checking internet
+        if isInternetAvailable()==false
+        {
+            CompletionHandler(false, nil, nil)
+            return
+        }
+        
+        Alamofire.request("https://s3.eu-west-2.amazonaws.com/interview-question-data/articles/articles.json").responseJSON { (response) in
             if let JSON = response.result.value {
                 CompletionHandler(true, JSON as AnyObject?,response.result.error as NSError?)
             }else
