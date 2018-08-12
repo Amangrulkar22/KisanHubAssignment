@@ -129,6 +129,9 @@ extension ArticleVC: UITableViewDelegate, UITableViewDataSource {
         
         cell.displayData(model: articlesArray[indexPath.row])
         
+        cell.authorCollectionView.reloadData()
+
         return cell
     }
+    
 }

@@ -19,6 +19,8 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var authorCollectionView: UICollectionView!
     @IBOutlet weak var subscriptionCollectionView: UICollectionView!
     
+    /// Author model
+    private(set) public var articleModelGlobal: ArticleModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,13 +34,16 @@ class ArticleTableViewCell: UITableViewCell {
     }
     
     func displayData(model: ArticleModel) {
+        
+        articleModelGlobal = model
+        
         self.title.text = model.title
         self.desc.text = model.description
         //self.imageUrl.text = model.imageUrl
         self.status.text = "\(model.status) - "
         self.publishDate.text = "\(model.publishDate) ago"
         
-        /// display avatar image
+        /// display article image
         if model.imageUrl != "" {
             let url = URL(string: model.imageUrl)
             if let url = url as? URL {
@@ -48,6 +53,30 @@ class ArticleTableViewCell: UITableViewCell {
             }
         }
         
+        
+        
     }
     
+}
+
+// MARK: - Article collectionview delegate methods
+extension ArticleTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (articleModelGlobal?.authors.count)!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? AuthorCollectionViewCell else {
+            return AuthorCollectionViewCell()
+        }
+        
+        cell.displayData(model: (articleModelGlobal?.authors[indexPath.row])!)
+        
+        return cell
+    }
 }

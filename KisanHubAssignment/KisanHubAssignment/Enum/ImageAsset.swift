@@ -11,4 +11,6 @@ import Foundation
 /// Enum for image asset, define all the images here which we need to use in coding
 public enum ImageAsset: String {
     case placeholder = "placeholder"
+    case avatar = "avatar"
+
 }
