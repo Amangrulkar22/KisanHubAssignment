@@ -11,5 +11,6 @@ pod 'Alamofire'
 pod 'ReachabilitySwift'
 pod 'SVProgressHUD'
 pod 'GoogleMaps'
+pod 'Kingfisher'
 
 end

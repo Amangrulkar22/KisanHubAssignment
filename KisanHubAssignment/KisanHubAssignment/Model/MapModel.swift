@@ -11,10 +11,14 @@ import Foundation
 /// Map model
 
 struct MapModel {
-    var sourceLatitude: Double?
-    var sourceLongitude: Double?
-    var sourceTitle: String = ""
-    var destinationLatitude: Double?
-    var destinationLongitude: Double?
-    var destinationTitle: String = ""
+    
+    private(set) public var latitude: Double
+    private(set) public var longitude: Double
+    private(set) public var title: String
+    
+    init(latitude: Double, longitude: Double, title: String) {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.title = title
+    }
 }

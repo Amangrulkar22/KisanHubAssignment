@@ -18,9 +18,6 @@ class MapVC: UIViewController {
     /// Button select option object
     @IBOutlet weak var btnSelectOption: UIButton!
     
-    /// Create map model object
-    var mapModel = MapModel()
-    
     var jsonGlobalObject: [AnyObject]?
     
     override func viewDidLoad() {
@@ -198,11 +195,6 @@ extension MapVC: LocationProtocol {
     ///
     /// - Parameter location: location object
     func udpatedLocation(location: CLLocation) {
-        
-        mapModel.sourceLatitude = location.coordinate.latitude
-        mapModel.sourceLongitude = location.coordinate.longitude
-        
-        //        btnSource.setTitle("  \(mapModel.sourceLatitude!),\(mapModel.sourceLongitude!)", for: .normal)
         
         let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: 13.0)
         
