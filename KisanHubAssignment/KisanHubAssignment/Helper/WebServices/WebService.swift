@@ -13,7 +13,7 @@ import Reachability
 class WebService {
     
     static let sharedInstance = WebService()
-
+    
     /// Function to check Imternet Connection available or not
     ///
     /// - Returns: return bool value
@@ -26,6 +26,49 @@ class WebService {
             return true
         } else {
             return false
+        }
+    }
+    
+    /// WebServce call to get map data
+    ///
+    ///   - withCompletionHandler: Response
+    func webServiceGetClimateData(_ CompletionHandler:@escaping (_ success:Bool, _ responseDictionary:String?, _ error:NSError?)->Void)
+    {
+        //--Checking internet
+        if isInternetAvailable()==false
+        {
+            CompletionHandler(false, nil, nil)
+            return
+        }
+        
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            
+            // the name of the file here I kept is yourFileName with appended extension
+            documentsURL.appendPathComponent("EnglandTmax.txt")
+            return (documentsURL, [.removePreviousFile])
+        }
+        
+        Alamofire.download("https://www.metoffice.gov.uk/pub/data/weather/uk/climate/datasets/Tmax/ranked/England.txt", to: destination).response { response in
+            if response.destinationURL != nil {
+                print(response.destinationURL!)
+                
+                let file = "EnglandTmax.txt" //this is the file. we will write to and read from it
+                
+                if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                    
+                    let fileURL = dir.appendingPathComponent(file)
+                    
+                    //reading
+                    do {
+                        let text = try String(contentsOf: fileURL, encoding: .utf8)
+                        CompletionHandler(true, text, response.error as NSError?)
+                    }
+                    catch {/* error handling here */
+                        CompletionHandler(false, nil, response.error as NSError?)
+                    }
+                }
+            }
         }
     }
     
