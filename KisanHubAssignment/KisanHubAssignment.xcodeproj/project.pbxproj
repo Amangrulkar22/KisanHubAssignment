@@ -16,11 +16,12 @@
 		A0AF001D211D9210004461A9 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF001C211D9210004461A9 /* MapModel.swift */; };
 		A0AF0022211D954A004461A9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A0AF0021211D954A004461A9 /* Localizable.strings */; };
 		A0AF0025211DA801004461A9 /* WebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF0024211DA801004461A9 /* WebService.swift */; };
+		A0C463D22121BFB0006EF8B2 /* AuthorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C463D02121BFAF006EF8B2 /* AuthorCollectionViewCell.swift */; };
+		A0C463D32121BFB0006EF8B2 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C463D12121BFAF006EF8B2 /* ArticleTableViewCell.swift */; };
 		C2F9C1C0F46BB5C01CAB1D1F /* Pods_KisanHubAssignment.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08633618EE40DE2547ACC6E3 /* Pods_KisanHubAssignment.framework */; };
 		FC79CDF221204E0900FABC6E /* ImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC79CDF121204E0900FABC6E /* ImageViewExt.swift */; };
 		FC79CDF521204E5300FABC6E /* ImageAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC79CDF421204E5300FABC6E /* ImageAsset.swift */; };
 		FC79CDF721205A8500FABC6E /* CALayerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC79CDF621205A8500FABC6E /* CALayerExt.swift */; };
-		FC79CDF92120650500FABC6E /* AuthorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC79CDF82120650500FABC6E /* AuthorCollectionViewCell.swift */; };
 		FCC4BACC211F677200950CC3 /* ArticleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC4BACB211F677200950CC3 /* ArticleModel.swift */; };
 		FCE4341E211CC2EE0046790A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4341D211CC2EE0046790A /* AppDelegate.swift */; };
 		FCE43420211CC2EE0046790A /* ContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE4341F211CC2EE0046790A /* ContentVC.swift */; };
@@ -28,7 +29,6 @@
 		FCE43426211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCE43424211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld */; };
 		FCE43428211CC2F00046790A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCE43427211CC2F00046790A /* Assets.xcassets */; };
 		FCE4342B211CC2F00046790A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCE43429211CC2F00046790A /* LaunchScreen.storyboard */; };
-		FCE6B018211F0E2A009612EE /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */; };
 		FCE6B01B211F113E009612EE /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCE6B01A211F113E009612EE /* CardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,12 +43,13 @@
 		A0AF001C211D9210004461A9 /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		A0AF0021211D954A004461A9 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		A0AF0024211DA801004461A9 /* WebService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebService.swift; sourceTree = "<group>"; };
+		A0C463D02121BFAF006EF8B2 /* AuthorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0C463D12121BFAF006EF8B2 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		C2E905C4030A423B8308BC2A /* Pods-KisanHubAssignment.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KisanHubAssignment.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KisanHubAssignment/Pods-KisanHubAssignment.debug.xcconfig"; sourceTree = "<group>"; };
 		D653A1827D1EDBBC29689313 /* Pods-KisanHubAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KisanHubAssignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-KisanHubAssignment/Pods-KisanHubAssignment.release.xcconfig"; sourceTree = "<group>"; };
 		FC79CDF121204E0900FABC6E /* ImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExt.swift; sourceTree = "<group>"; };
 		FC79CDF421204E5300FABC6E /* ImageAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAsset.swift; sourceTree = "<group>"; };
 		FC79CDF621205A8500FABC6E /* CALayerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExt.swift; sourceTree = "<group>"; };
-		FC79CDF82120650500FABC6E /* AuthorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCC4BACB211F677200950CC3 /* ArticleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleModel.swift; sourceTree = "<group>"; };
 		FCE4341A211CC2EE0046790A /* KisanHubAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KisanHubAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCE4341D211CC2EE0046790A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		FCE43427211CC2F00046790A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCE4342A211CC2F00046790A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCE4342C211CC2F00046790A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		FCE6B01A211F113E009612EE /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,8 +230,8 @@
 		FCE6B016211F0DE5009612EE /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				FCE6B017211F0E2A009612EE /* ArticleTableViewCell.swift */,
-				FC79CDF82120650500FABC6E /* AuthorCollectionViewCell.swift */,
+				A0C463D12121BFAF006EF8B2 /* ArticleTableViewCell.swift */,
+				A0C463D02121BFAF006EF8B2 /* AuthorCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -385,14 +385,14 @@
 				A0AF0025211DA801004461A9 /* WebService.swift in Sources */,
 				FCE43420211CC2EE0046790A /* ContentVC.swift in Sources */,
 				A0AF000F211D7C6A004461A9 /* MapVC.swift in Sources */,
+				A0C463D22121BFB0006EF8B2 /* AuthorCollectionViewCell.swift in Sources */,
 				FC79CDF221204E0900FABC6E /* ImageViewExt.swift in Sources */,
 				FCE43426211CC2EE0046790A /* KisanHubAssignment.xcdatamodeld in Sources */,
-				FC79CDF92120650500FABC6E /* AuthorCollectionViewCell.swift in Sources */,
 				FC79CDF721205A8500FABC6E /* CALayerExt.swift in Sources */,
-				FCE6B018211F0E2A009612EE /* ArticleTableViewCell.swift in Sources */,
 				A0AF0011211D7C84004461A9 /* ArticleVC.swift in Sources */,
 				A0AF000D211D7C29004461A9 /* RegionClimateVC.swift in Sources */,
 				FCE6B01B211F113E009612EE /* CardView.swift in Sources */,
+				A0C463D32121BFB0006EF8B2 /* ArticleTableViewCell.swift in Sources */,
 				FCE4341E211CC2EE0046790A /* AppDelegate.swift in Sources */,
 				A0AF001D211D9210004461A9 /* MapModel.swift in Sources */,
 				A0AF0014211D8103004461A9 /* CustomAlertView.swift in Sources */,

@@ -52,9 +52,6 @@ class ArticleTableViewCell: UITableViewCell {
                 }
             }
         }
-        
-        
-        
     }
     
 }
@@ -79,4 +76,9 @@ extension ArticleTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 105, height: 105)
+    }
+
 }
