@@ -15,3 +15,6 @@ let keyGoogleMap: String = "AIzaSyA7p9jGhiFwMjYXxDbw37ahiHSRWMq8Gvs"
 let Url_Region_Data: String = "https://www.metoffice.gov.uk/climate/uk/summaries/datasets#yearOrdered"
 let Url_Google_Map: String = "​https://s3.eu-west-2.amazonaws.com/interview-question-data/farm/farms.json"
 let Url_Article_Data: String = "​https://s3.eu-west-2.amazonaws.com/interview-question-data/articles/articles.json"
+
+/// Climate API
+let Climate_Base_Url: String = "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/datasets/%@/date/%@.txt"

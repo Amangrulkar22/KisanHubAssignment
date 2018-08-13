@@ -32,7 +32,7 @@ class WebService {
     /// WebServce call to get map data
     ///
     ///   - withCompletionHandler: Response
-    func webServiceGetClimateData(_ CompletionHandler:@escaping (_ success:Bool, _ responseDictionary:String?, _ error:NSError?)->Void)
+    func webServiceGetClimateData(fileName: String, param: String, country: String, _ CompletionHandler:@escaping (_ success:Bool, _ responseDictionary:String?, _ error:NSError?)->Void)
     {
         //--Checking internet
         if isInternetAvailable()==false
@@ -45,15 +45,19 @@ class WebService {
             var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             
             // the name of the file here I kept is yourFileName with appended extension
-            documentsURL.appendPathComponent("EnglandTmax.txt")
+            documentsURL.appendPathComponent("\(fileName).txt")
             return (documentsURL, [.removePreviousFile])
         }
         
-        Alamofire.download("https://www.metoffice.gov.uk/pub/data/weather/uk/climate/datasets/Tmax/ranked/England.txt", to: destination).response { response in
+        let url = String(format: Climate_Base_Url, param, country)
+        
+        print(url)
+        
+        Alamofire.download(url, to: destination).response { response in
             if response.destinationURL != nil {
                 print(response.destinationURL!)
                 
-                let file = "EnglandTmax.txt" //this is the file. we will write to and read from it
+                let file = "\(fileName).txt" //this is the file. we will write to and read from it
                 
                 if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
                     
