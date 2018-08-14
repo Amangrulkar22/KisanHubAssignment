@@ -18,7 +18,7 @@ class RegionClimateVC: UIViewController {
     let country: [String] = ["UK", "England", "Wales", "Scotland"]
 
     /// Climate parameter array
-    let climate_parameters: [String] = ["Tmax", "Tmin", "Tmean", "Sunshine", "Rainfall"]
+    let climate_parameters: [String] = ["Tmax", "Tmin", "Sunshine", "Rainfall"]
 
     
     override func viewDidLoad() {
