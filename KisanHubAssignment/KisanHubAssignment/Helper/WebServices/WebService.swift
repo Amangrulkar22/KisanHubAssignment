@@ -65,8 +65,8 @@ class WebService {
                     
                     //reading
                     do {
-                        let text = try String(contentsOf: fileURL, encoding: .utf8)
-                        CompletionHandler(true, text, response.error as NSError?)
+                        let textData = try String(contentsOf: fileURL, encoding: .utf8)
+                        CompletionHandler(true, textData, response.error as NSError?)
                     }
                     catch {/* error handling here */
                         CompletionHandler(false, nil, response.error as NSError?)

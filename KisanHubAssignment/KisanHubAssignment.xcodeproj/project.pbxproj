@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A09155812122FCF700E655F9 /* ClimateWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09155802122FCF700E655F9 /* ClimateWrapper.swift */; };
 		A0AF000B211D7623004461A9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF000A211D7623004461A9 /* Constants.swift */; };
 		A0AF000D211D7C29004461A9 /* RegionClimateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF000C211D7C29004461A9 /* RegionClimateVC.swift */; };
 		A0AF000F211D7C6A004461A9 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0AF000E211D7C6A004461A9 /* MapVC.swift */; };
@@ -35,6 +36,7 @@
 
 /* Begin PBXFileReference section */
 		08633618EE40DE2547ACC6E3 /* Pods_KisanHubAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KisanHubAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A09155802122FCF700E655F9 /* ClimateWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClimateWrapper.swift; sourceTree = "<group>"; };
 		A0AF000A211D7623004461A9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A0AF000C211D7C29004461A9 /* RegionClimateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionClimateVC.swift; sourceTree = "<group>"; };
 		A0AF000E211D7C6A004461A9 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 				08633618EE40DE2547ACC6E3 /* Pods_KisanHubAssignment.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A091557F2122FCB000E655F9 /* CoreDataWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				A09155802122FCF700E655F9 /* ClimateWrapper.swift */,
+			);
+			path = CoreDataWrapper;
 			sourceTree = "<group>";
 		};
 		A0AF0002211D7333004461A9 /* Model */ = {
@@ -152,6 +162,7 @@
 		A0AF0015211D918D004461A9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				A091557F2122FCB000E655F9 /* CoreDataWrapper */,
 				A0AF0023211DA801004461A9 /* WebServices */,
 				A0AF0016211D91A6004461A9 /* LocationManager */,
 			);
@@ -388,6 +399,7 @@
 				A0AF0025211DA801004461A9 /* WebService.swift in Sources */,
 				FC4DBE55212204B60054554D /* StringExt.swift in Sources */,
 				FCE43420211CC2EE0046790A /* ContentVC.swift in Sources */,
+				A09155812122FCF700E655F9 /* ClimateWrapper.swift in Sources */,
 				A0AF000F211D7C6A004461A9 /* MapVC.swift in Sources */,
 				A0C463D22121BFB0006EF8B2 /* AuthorCollectionViewCell.swift in Sources */,
 				FC79CDF221204E0900FABC6E /* ImageViewExt.swift in Sources */,
