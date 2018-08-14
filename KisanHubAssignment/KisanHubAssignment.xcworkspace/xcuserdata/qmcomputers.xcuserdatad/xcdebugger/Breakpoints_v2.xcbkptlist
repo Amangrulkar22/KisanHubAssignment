@@ -10,13 +10,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "KisanHubAssignment/View/Cell/ArticleTableViewCell.swift"
-            timestampString = "555921718.813463"
+            timestampString = "555923478.4667259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
             landmarkName = "displayData(model:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KisanHubAssignment/View/Cell/AuthorCollectionViewCell.swift"
+            timestampString = "555923115.7979259"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "displayData(model:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "KisanHubAssignment/View/Cell/AuthorCollectionViewCell.swift"
+            timestampString = "555923320.150237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "displayData(model:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "KisanHubAssignment.AuthorCollectionViewCell.displayData(model: KisanHubAssignment.AuthorModel) -&gt; ()"
+                  moduleName = "KisanHubAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qmcomputers/Desktop/untitled%20folder/KisanHubAssignment/KisanHubAssignment/KisanHubAssignment/View/Cell/AuthorCollectionViewCell.swift"
+                  timestampString = "555923480.444795"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "24"
+                  endingLineNumber = "24"
+                  offsetFromSymbolStart = "2569">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;__ObjC.UIImage&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; () in KisanHubAssignment.AuthorCollectionViewCell.displayData(model: KisanHubAssignment.AuthorModel) -&gt; ()"
+                  moduleName = "KisanHubAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qmcomputers/Desktop/untitled%20folder/KisanHubAssignment/KisanHubAssignment/KisanHubAssignment/View/Cell/AuthorCollectionViewCell.swift"
+                  timestampString = "555923480.4491611"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

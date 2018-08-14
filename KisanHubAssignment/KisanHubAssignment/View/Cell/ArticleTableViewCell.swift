@@ -20,6 +20,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var authorCollectionView: UICollectionView!
     @IBOutlet weak var subscriptionCollectionView: UICollectionView!
     @IBOutlet weak var viewAutor:UIView!
+    @IBOutlet var lbl_Author: UILabel!
     
     /// Author model
     private(set) public var articleModelGlobal: ArticleModel?
@@ -53,6 +54,7 @@ class ArticleTableViewCell: UITableViewCell {
             self.viewAutor.isHidden = false
             self.viewHeight.constant = 130
         }
+        self.lbl_Author.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         /// display article image
         if model.imageUrl != "" {
             let url = URL(string: model.imageUrl)

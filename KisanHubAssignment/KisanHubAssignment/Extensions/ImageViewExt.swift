@@ -19,7 +19,7 @@ extension UIImageView {
             self.kf.indicatorType = .activity
         }
         
-        self.kf.setImage(with: url, placeholder: placeHolderImage, options: nil,progressBlock: { receivedSize, totalSize in
+        self.kf.setImage(with: url, placeholder: placeHolderImage, options: [KingfisherOptionsInfoItem.fromMemoryCacheOrRefresh],progressBlock: { receivedSize, totalSize in
         },
                          completionHandler: { image, error, cacheType, imageURL in withCompletionHandler(true,image,error)
         })
