@@ -13,11 +13,13 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
 
+    @IBOutlet var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var publishDate: UILabel!
     @IBOutlet weak var authorCollectionView: UICollectionView!
     @IBOutlet weak var subscriptionCollectionView: UICollectionView!
+    @IBOutlet weak var viewAutor:UIView!
     
     /// Author model
     private(set) public var articleModelGlobal: ArticleModel?
@@ -32,7 +34,9 @@ class ArticleTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+    }
     func displayData(model: ArticleModel) {
         
         articleModelGlobal = model
@@ -42,7 +46,13 @@ class ArticleTableViewCell: UITableViewCell {
         //self.imageUrl.text = model.imageUrl
         self.status.text = "\(model.status) - "
         self.publishDate.text = "\(model.publishDate) ago"
-        
+        if(model.authors.count == 0 && self.viewAutor.alpha == 1){
+            self.viewHeight.constant = 0
+            self.viewAutor.isHidden = true
+        }else{
+            self.viewAutor.isHidden = false
+            self.viewHeight.constant = 130
+        }
         /// display article image
         if model.imageUrl != "" {
             let url = URL(string: model.imageUrl)

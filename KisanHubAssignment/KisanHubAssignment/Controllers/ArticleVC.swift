@@ -128,10 +128,12 @@ extension ArticleVC: UITableViewDelegate, UITableViewDataSource {
         cell.contentView.backgroundColor = UIColor(white: 0.93, alpha: 1)
         
         cell.displayData(model: articlesArray[indexPath.row])
-        
-        cell.authorCollectionView.reloadData()
-
+        if(cell.authorCollectionView != nil){
+            cell.authorCollectionView.reloadData()
+        }
         return cell
     }
-        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
