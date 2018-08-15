@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class RegionClimateVC: UIViewController {
     
@@ -15,13 +14,18 @@ class RegionClimateVC: UIViewController {
     @IBOutlet weak var btnCountry: UIButton!
     @IBOutlet weak var btnParameter: UIButton!
     
+    var customActivityIndicator : UIActivityIndicatorView!
+    
     /// Empty array to store data
     var dataArray: [DTOClimate] = []
     
     var countryId: Int16 = 0
     var parameterId: Int16 = 0
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
+        setupIndicator()
+        customActivityIndicator.startAnimating()
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
@@ -31,9 +35,12 @@ class RegionClimateVC: UIViewController {
         
         /// Insert record when database is empty
         if ClimateWrapper.sharedInstance.fetchRecords().count == 0 {
+            
             DispatchQueue.main.async {
                 self.insertDataIntoDatabase()
             }
+            
+            
         }else {
             /// Fetch first record from database
             fetchRecords(countryId: Country.UK.rawValue, paramId: CountryParams.MaxTemp.rawValue)
@@ -43,12 +50,31 @@ class RegionClimateVC: UIViewController {
         self.btnParameter.setTitle(climate_parameters[0], for: .normal)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+    
+    // Setup custom activity Indicator
+    func setupIndicator()
+    {
+        let container: UIView = UIView()
+        container.frame = CGRect(x: 0, y: 0, width: 80, height: 80) // Set X and Y whatever you want
+        container.backgroundColor = .clear
+        
+        let activityView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        activityView.center = self.view.center
+        activityView.startAnimating()
+        
+        container.addSubview(activityView)
+        self.view.addSubview(container)
+        customActivityIndicator = activityView
+        
+    }
+    
     /// Insert record into database
     func insertDataIntoDatabase() {
         
-        DispatchQueue.main.async {
-            SVProgressHUD.show()
-        }
         
         let documentsURL = try! FileManager().url(for: .documentDirectory,
                                                   in: .userDomainMask,
@@ -144,9 +170,7 @@ class RegionClimateVC: UIViewController {
             /// Parse last record
             if outerIndex == country.count - 1 {
                 
-                DispatchQueue.main.async {
-                    SVProgressHUD.dismiss()
-                }
+                customActivityIndicator.stopAnimating()
                 
                 /// Fetch first record from database
                 fetchRecords(countryId: self.countryId, paramId: self.parameterId)
@@ -161,7 +185,6 @@ class RegionClimateVC: UIViewController {
     ///   - paramId: param id
     func fetchRecords(countryId: Int16, paramId: Int16) {
         
-        SVProgressHUD.show()
         
         if dataArray.count > 0 {
             dataArray.removeAll(keepingCapacity: true)
@@ -169,11 +192,9 @@ class RegionClimateVC: UIViewController {
         
         DispatchQueue.main.async {
             self.dataArray = ClimateWrapper.sharedInstance.fetchRecordsById(countryId: countryId, paramId: paramId)
-            
+            self.customActivityIndicator.stopAnimating()
             self.tableView.reloadData()
         }
-        
-        SVProgressHUD.dismiss()
     }
     
     

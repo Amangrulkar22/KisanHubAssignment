@@ -138,6 +138,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="rbW-Nb-8PM"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Select Country">
                                             <color key="titleColor" red="0.61960784313725492" green="0.6588235294117647" blue="0.29803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -148,6 +149,7 @@
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xib-gI-LWj">
                                         <rect key="frame" x="187.5" y="0.0" width="167.5" height="40"/>
                                         <color key="backgroundColor" white="0.67000000000000004" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Select Parameter">
                                             <color key="titleColor" red="0.61960784310000006" green="0.6588235294" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>

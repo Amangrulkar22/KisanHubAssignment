@@ -12,7 +12,7 @@ class ArticleTableViewCell: UITableViewCell {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var desc: UILabel!
-
+    
     @IBOutlet var viewHeight: NSLayoutConstraint!
     @IBOutlet weak var articleImageView: UIImageView!
     @IBOutlet weak var status: UILabel!
@@ -21,6 +21,8 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var subscriptionCollectionView: UICollectionView!
     @IBOutlet weak var viewAutor:UIView!
     @IBOutlet var lbl_Author: UILabel!
+    
+    
     
     /// Author model
     private(set) public var articleModelGlobal: ArticleModel?
@@ -38,6 +40,7 @@ class ArticleTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
+    
     func displayData(model: ArticleModel) {
         
         articleModelGlobal = model
@@ -57,7 +60,9 @@ class ArticleTableViewCell: UITableViewCell {
         self.lbl_Author.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         /// display article image
         if model.imageUrl != "" {
+            
             let url = URL(string: model.imageUrl)
+            
             if let url = url as? URL {
                 let _ = articleImageView?.imageFromUrl(url, placeHolderImage: UIImage(named:ImageAsset.placeholder.rawValue), shouldResize: true, showActivity: true){(success,image,error) -> Void in
                     if error == nil{}
@@ -92,5 +97,5 @@ extension ArticleTableViewCell: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 105, height: 105)
     }
-
+    
 }

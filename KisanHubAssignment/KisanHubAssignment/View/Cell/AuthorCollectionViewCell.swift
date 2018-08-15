@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AuthorCollectionViewCell: UICollectionViewCell {
     
@@ -19,11 +20,15 @@ class AuthorCollectionViewCell: UICollectionViewCell {
         
         /// display profile image
         if model.profileUrl != "" {
-            let url = URL(string: model.profileUrl)
-            if let url = url as? URL {
-                let _ = authorImageView?.imageFromUrl(url, placeHolderImage: UIImage(named:ImageAsset.avatar.rawValue), shouldResize: true, showActivity: true){(success,image,error) -> Void in
-                    if error == nil{}
-                }
+            
+             let updatedUrl = model.profileUrl.replacingOccurrences(of: "/media/../", with: "/")
+            let url = URL(string: updatedUrl)
+            
+            
+            authorImageView.kf.setImage(with: url, placeholder: UIImage(named:ImageAsset.avatar.rawValue), options: [KingfisherOptionsInfoItem.fromMemoryCacheOrRefresh], progressBlock: { (receivedSize, totalSize) in
+                
+            }) { (image, error, cacheType, imageURL) in
+               
             }
         }
     }
