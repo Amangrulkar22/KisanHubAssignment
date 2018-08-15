@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14135" systemVersion="17G65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Climate" representedClassName="Climate" syncable="YES" codeGenerationType="class">
+    <entity name="Climate" representedClassName="Climate" syncable="YES">
         <attribute name="apr" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="aug" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="countryName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="countryId" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="countryParamId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="dec" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="feb" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="jan" optional="YES" attributeType="String" syncable="YES"/>
@@ -16,16 +16,9 @@
         <attribute name="oct" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sep" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Climate" syncable="YES"/>
-    </entity>
-    <entity name="ClimateParams" representedClassName="ClimateParams" syncable="YES" codeGenerationType="class">
-        <attribute name="maxTemp" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="minTemp" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="rainfall" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="sunshine" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Climate" inverseName="relationship" inverseEntity="Climate" syncable="YES"/>
     </entity>
     <elements>
         <element name="Climate" positionX="-63" positionY="-18" width="128" height="285"/>
-        <element name="ClimateParams" positionX="-45" positionY="126" width="128" height="105"/>
     </elements>
 </model>

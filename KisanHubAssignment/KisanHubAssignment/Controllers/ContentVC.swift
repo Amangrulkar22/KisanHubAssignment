@@ -10,19 +10,12 @@ import UIKit
 import SVProgressHUD
 
 class ContentVC: UIViewController {
-
+    
     /// Tableview object
     @IBOutlet weak var tableView: UITableView!
     
     /// Tableview cell indentifier
     let cellIdentifier: [String] = ["map", "article", "region"]
-    
-    /// Country array
-    let country: [String] = ["UK", "England", "Wales", "Scotland"]
-    
-    /// Climate parameter array
-    let climate_parameters: [String] = ["Tmax", "Tmin", "Sunshine", "Rainfall"]
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +24,20 @@ class ContentVC: UIViewController {
         /// Remove unwanted seprator
         tableView.tableFooterView = UIView()
         
+        let documentsURL = try! FileManager().url(for: .documentDirectory,
+                                                  in: .userDomainMask,
+                                                  appropriateFor: nil,
+                                                  create: true)
+        
         /// Generate dynamic url for fetching data
         for outerIndex in 0..<country.count {
             for innerIndex in 0..<climate_parameters.count {
-                webServiceGetClimateData(fileName: "\(country[outerIndex])\(climate_parameters[innerIndex])", params: climate_parameters[innerIndex], country: country[outerIndex])
+                
+                let fileURL = documentsURL.appendingPathComponent("\(country[outerIndex])\(climate_parameters[innerIndex]).txt")
+                
+                if !FileManager.default.fileExists(atPath: fileURL.path) {
+                    webServiceGetClimateData(fileName: "\(country[outerIndex])\(climate_parameters[innerIndex])", params: climate_parameters[innerIndex], country: country[outerIndex])
+                }
             }
         }
     }
@@ -61,40 +64,12 @@ class ContentVC: UIViewController {
                 return
             }
             
-            guard let json = response, response != nil, success else {
+            guard let _ = response, response != nil, success else {
                 CustomAlertView.showNegativeAlert(NSLocalizedString("ALERT_RESPONSE_ERROR", comment: ""))
                 return
             }
             //            print("Response json: \(json)")
-            //            var tempArray: [[String]] = []
-            //            let formattedArray = self.formatFile(data: json) as Array
-            //
-            //            for index in 7..<formattedArray.count-1 {
-            //                tempArray.append(formattedArray[index])
-            //            }
-            //
-            //            for index in 0..<tempArray.count {
-            //                if let data = tempArray[index] as? [String] {
-            //                    let str = data[0].condenseWhitespace()
-            //                    print(str)
-            //
-            //                }
-            //            }
         }
-    }
-    
-    /// Function used to format txt file and make it readable
-    ///
-    /// - Parameter data: string value
-    /// - Returns: formated array
-    func formatFile(data: String) -> [[String]] {
-        var result: [[String]] = []
-        let rows = data.components(separatedBy: "\n")
-        for row in rows {
-            let columns = row.components(separatedBy: ";")
-            result.append(columns)
-        }
-        return result
     }
     
 }

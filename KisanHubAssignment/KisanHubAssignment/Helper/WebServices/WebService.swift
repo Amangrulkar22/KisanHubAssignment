@@ -51,11 +51,11 @@ class WebService {
         
         let url = String(format: Climate_Base_Url, param, country)
         
-        print(url)
+        //print(url)
         
         Alamofire.download(url, to: destination).response { response in
             if response.destinationURL != nil {
-                print(response.destinationURL!)
+                //print(response.destinationURL!)
                 
                 let file = "\(fileName).txt" //this is the file. we will write to and read from it
                 

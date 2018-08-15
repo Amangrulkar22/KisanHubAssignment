@@ -18,3 +18,12 @@ let Url_Article_Data: String = "​https://s3.eu-west-2.amazonaws.com/interview-
 
 /// Climate API
 let Climate_Base_Url: String = "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/datasets/%@/date/%@.txt"
+
+let ClimateTable: String = "Climate"
+
+/// Country array
+let country: [String] = ["UK", "England", "Wales", "Scotland"]
+
+/// Climate parameter array
+let climate_parameters: [String] = ["Tmax", "Tmin", "Sunshine", "Rainfall"]
+

@@ -9,219 +9,269 @@
 import Foundation
 import CoreData
 
-let managedContext = (UIApplication.shared.delegate as! AppDelegate).managedObjectContext
-
 class ClimateWrapper: NSManagedObject
 {
     /*
-     /Create singleton object of class EmployeeModel
+     /Create singleton object of class climateModel
      */
     static let sharedInstance : ClimateWrapper = {
         let instance = ClimateWrapper()
         return instance
     }()
     
-        /*
-         // Insert record in core data
-         */
-        func insertRecord(_ employeeObj : DTOEmployee) -> Bool
-        {
-            //2
-            let entity =  NSEntityDescription.entity(forEntityName: "Climate",
-                in:managedContext)
-            
-            let employee = NSManagedObject(entity: entity!,
-                insertInto: managedContext) as! Climate
-            
-            employee.emp_id = employeeObj.emp_id
-            employee.emp_name = employeeObj.emp_name
-            employee.emp_age = employeeObj.emp_age
-            
-            //4
-            do {
-                try managedContext.save()
-                //5
-                print("Record Saved")
-                return true
-                
-            } catch let error as NSError  {
-                print("Could not save \(error), \(error.userInfo)")
-            }
-            return false
-        }
+    /*
+     // Insert record in core data
+     */
+    func insertRecord(_ climateObj : DTOClimate) -> Bool
+    {
+        //2
+        let entity =  NSEntityDescription.entity(forEntityName: ClimateTable,
+                                                 in:managedContext)
         
-        /*
-         // fetch all records in core data
-         */
-        func fetchRecords() -> [DTOEmployee]
-        {
-            // Create object of any object
-            var fetchRecordsArray : [DTOEmployee] = []
-            // Fetching
-//            let fetchRequest = NSFetchRequest()
-            let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
-
-            // Create Entity Description
-            let entityDescription = NSEntityDescription.entity(forEntityName: "Climate", in:managedContext)
+        let climate = NSManagedObject(entity: entity!,
+                                      insertInto: managedContext) as! Climate
+        
+        climate.countryId = climateObj.countryId
+        climate.countryParamId = climateObj.countryParamId
+        climate.year = climateObj.year
+        climate.jan = climateObj.jan
+        climate.feb = climateObj.feb
+        climate.mar = climateObj.mar
+        climate.apr = climateObj.apr
+        climate.may = climateObj.may
+        climate.jun = climateObj.jun
+        climate.jul = climateObj.jul
+        climate.aug = climateObj.aug
+        climate.sep = climateObj.sep
+        climate.oct = climateObj.oct
+        climate.nov = climateObj.nov
+        climate.dec = climateObj.dec
+        
+        do {
+            try managedContext.save()
+            //                print("Record Saved")
+            return true
             
-            // Configure Fetch Request
-            fetchRequest.entity = entityDescription
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+        return false
+    }
+    
+    /*
+     // fetch all records in core data
+     */
+    func fetchRecords() -> [DTOClimate]
+    {
+        // Create object of any object
+        var fetchRecordsArray : [DTOClimate] = []
+        // Fetching
+        //            let fetchRequest = NSFetchRequest()
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest()
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entity(forEntityName: ClimateTable, in:managedContext)
+        
+        // Configure Fetch Request
+        fetchRequest.entity = entityDescription
+        
+        // Execute Fetch Request
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            print(result)
             
-            // Execute Fetch Request
-            do {
-                let result = try managedContext.fetch(fetchRequest)
-                print(result)
+            if (result.count > 0) {
                 
-                if (result.count > 0) {
+                for index in 0..<result.count
+                {
+                    let climate : Climate =  result[index] as! Climate
                     
-                    for index in 0..<result.count
-                    {
-                        let employee : Climate =  result[index] as! Climate
-                        
-                        var dtoEmployee : DTOEmployee = DTOEmployee()
-                        dtoEmployee.emp_id = employee.value(forKey: "emp_id") as? String
-                        dtoEmployee.emp_name = employee.value(forKey: "emp_name") as? String
-                        dtoEmployee.emp_age = employee.value(forKey: "emp_age") as? String
-                        
-                        fetchRecordsArray.append(dtoEmployee)
-                    }
-                    return fetchRecordsArray
+                    let countryid = climate.value(forKey: "countryId") as? Int16
+                    let countryParamId = climate.value(forKey: "countryParamId") as? Int16
+                    let year = climate.value(forKey: "year") as? String
+                    let jan = climate.value(forKey: "jan") as? String
+                    let feb = climate.value(forKey: "feb") as? String
+                    let mar = climate.value(forKey: "mar") as? String
+                    let apr = climate.value(forKey: "apr") as? String
+                    let may = climate.value(forKey: "may") as? String
+                    let jun = climate.value(forKey: "jun") as? String
+                    let jul = climate.value(forKey: "jul") as? String
+                    let aug = climate.value(forKey: "aug") as? String
+                    let sep = climate.value(forKey: "sep") as? String
+                    let oct = climate.value(forKey: "oct") as? String
+                    let nov = climate.value(forKey: "nov") as? String
+                    let dec = climate.value(forKey: "dec") as? String
+                    
+                    let dtoClimate = DTOClimate(apr: apr!, aug: aug!, countryId: countryid!, countryParamId: countryParamId!, dec: dec!, feb: feb!, jan: jan!, jul: jul!, jun: jun!, mar: mar!, may: may!, nov: nov!, oct: oct!, sep: sep!, year: year!)
+                    
+                    fetchRecordsArray.append(dtoClimate)
                 }
-                
-            } catch {
-                let fetchError = error as NSError
-                print(fetchError)
+                return fetchRecordsArray
             }
-            return fetchRecordsArray
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
         }
+        return fetchRecordsArray
+    }
+    
+    /*
+     // Insert specific record according to id in core data
+     */
+    func fetchRecordsById(countryId : Int16, paramId: Int16) -> [DTOClimate]
+    {
         
-        /*
-         // Insert specific record according to id in core data
-         */
-        func fetchRecordsById(_ id : String) -> DTOEmployee
-        {
-            var dtoEmployee = DTOEmployee()
+        // Create object of any object
+        var fetchRecordsArray : [DTOClimate] = []
+        
+        // Fetching
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : ClimateTable)
+        
+        // Create Predicate
+        let predicateContry = NSPredicate(format: "countryId == %d", countryId)
+        let predicateIsEnabled = NSPredicate(format: "countryParamId == %d", paramId)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [predicateContry, predicateIsEnabled])
+        
+        fetchRequest.predicate = predicate
+        
+        // Add Sort Descriptor
+        //            let sortDescriptor1 = NSSortDescriptor(key: "countryParamId", ascending: true)
+        //            fetchRequest.sortDescriptors = [sortDescriptor1]
+        
+        // Execute Fetch Request
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            print(result)
             
-            // Fetching
-            let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : "Climate")
-            
-            // Create Predicate
-            let predicate = NSPredicate(format: "%K == %@", "emp_id", id)
-            fetchRequest.predicate = predicate
-            
-            // Add Sort Descriptor
-            let sortDescriptor1 = NSSortDescriptor(key: "emp_id", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor1]
-            
-            // Execute Fetch Request
-            do {
-                let result = try managedContext.fetch(fetchRequest)
-                print(result)
+            if (result.count > 0) {
                 
-                if (result.count > 0) {
-                    let employee = result[0] as! EmployeeModel
+                for index in 0..<result.count
+                {
+                    let climate : Climate =  result[index] as! Climate
                     
-                    dtoEmployee.emp_id = employee.value(forKey: "emp_id") as? String
-                    dtoEmployee.emp_name = employee.value(forKey: "emp_name") as? String
-                    dtoEmployee.emp_age = employee.value(forKey: "emp_age") as? String
+                    let countryid = climate.value(forKey: "countryId") as? Int16
+                    let countryParamId = climate.value(forKey: "countryParamId") as? Int16
+                    let year = climate.value(forKey: "year") as? String
+                    let jan = climate.value(forKey: "jan") as? String
+                    let feb = climate.value(forKey: "feb") as? String
+                    let mar = climate.value(forKey: "mar") as? String
+                    let apr = climate.value(forKey: "apr") as? String
+                    let may = climate.value(forKey: "may") as? String
+                    let jun = climate.value(forKey: "jun") as? String
+                    let jul = climate.value(forKey: "jul") as? String
+                    let aug = climate.value(forKey: "aug") as? String
+                    let sep = climate.value(forKey: "sep") as? String
+                    let oct = climate.value(forKey: "oct") as? String
+                    let nov = climate.value(forKey: "nov") as? String
+                    let dec = climate.value(forKey: "dec") as? String
                     
-                    return dtoEmployee
+                    let dtoClimate = DTOClimate(apr: apr!, aug: aug!, countryId: countryid!, countryParamId: countryParamId!, dec: dec!, feb: feb!, jan: jan!, jul: jul!, jun: jun!, mar: mar!, may: may!, nov: nov!, oct: oct!, sep: sep!, year: year!)
+                    
+                    fetchRecordsArray.append(dtoClimate)
                 }
-                
-            } catch {
-                let fetchError = error as NSError
-                print(fetchError)
+                return fetchRecordsArray
             }
-            return dtoEmployee
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
         }
+        return fetchRecordsArray
+    }
+    
+    /*
+     /Update specific record according to id
+     */
+    func updateRecordById(countryId : Int16, paramId: Int16) -> Bool {
         
-        /*
-         /Update specific record according to id
-         */
-        func updateRecordById(_ dto : DTOEmployee) -> Bool {
+        // Fetching
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : ClimateTable)
+        
+        // Create Predicate
+        let predicateContry = NSPredicate(format: "countryId == %d", countryId)
+        let predicateIsEnabled = NSPredicate(format: "countryParamId == %d", paramId)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [predicateContry, predicateIsEnabled])
+        
+        fetchRequest.predicate = predicate
+        
+        // Add Sort Descriptor
+        //            let sortDescriptor1 = NSSortDescriptor(key: "countryParamId", ascending: true)
+        //            fetchRequest.sortDescriptors = [sortDescriptor1]
+        
+        // Execute Fetch Request
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            print(result)
             
-            // Fetching
-            let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : "Climate")
-            
-            // Create Predicate
-            let predicate = NSPredicate(format: "%K == %@", "emp_id", dto.emp_id!)
-            fetchRequest.predicate = predicate
-            
-            // Add Sort Descriptor
-            let sortDescriptor1 = NSSortDescriptor(key: "emp_id", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor1]
-            
-            // Execute Fetch Request
-            do {
-                let result = try managedContext.fetch(fetchRequest)
-                print(result)
+            if (result.count > 0) {
+                let climate = result[0] as! Climate
                 
-                if (result.count > 0) {
-                    let employee = result[0] as! EmployeeModel
+                climate.countryId = countryId
+                climate.countryParamId = paramId
+                
+                do {
+                    try climate.managedObjectContext?.save()
+                    return true
                     
-                    employee.emp_id = dto.emp_id!
-                    employee.emp_name = dto.emp_name!
-                    employee.emp_age = dto.emp_age!
-                    
-                    do {
-                        try employee.managedObjectContext?.save()
-                        return true
-                        
-                    } catch {
-                        let saveError = error as NSError
-                        print(saveError)
-                    }
+                } catch {
+                    let saveError = error as NSError
+                    print(saveError)
                 }
-                
-            } catch {
-                let fetchError = error as NSError
-                print(fetchError)
             }
             
-            return false
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
         }
         
+        return false
+    }
+    
+    
+    /*
+     /Delete specific record according to id
+     */
+    func deleteRecordById(contryId : Int16, paramId: Int16) -> Bool
+    {
+        // Fetching
+        let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : ClimateTable)
         
-        /*
-         /Delete specific record according to id
-         */
-        func deleteRecordById(_ id : String) -> Bool
-        {
-            // Fetching
-            let fetchRequest : NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName : "Climate")
+        // Create Predicate
+        let predicateContry = NSPredicate(format: "countryId == %d", contryId)
+        let predicateIsEnabled = NSPredicate(format: "countryParamId == %d", paramId)
+        let predicate = NSCompoundPredicate(type: .and, subpredicates: [predicateContry, predicateIsEnabled])
+        
+        fetchRequest.predicate = predicate
+        
+        // Add Sort Descriptor
+        //            let sortDescriptor1 = NSSortDescriptor(key: "countryParamId", ascending: true)
+        //            fetchRequest.sortDescriptors = [sortDescriptor1]
+        
+        // Execute Fetch Request
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            print(result)
             
-            // Create Predicate
-            let predicate = NSPredicate(format: "%K == %@", "emp_id", id)
-            fetchRequest.predicate = predicate
-            
-            // Add Sort Descriptor
-            let sortDescriptor1 = NSSortDescriptor(key: "emp_id", ascending: true)
-            fetchRequest.sortDescriptors = [sortDescriptor1]
-            
-            // Execute Fetch Request
-            do {
-                let result = try managedContext.fetch(fetchRequest)
-                print(result)
+            if (result.count > 0) {
+                let climate = result[0] as! Climate
                 
-                if (result.count > 0) {
-                    let employee = result[0] as! EmployeeModel
+                managedContext.delete(climate)
+                
+                do {
+                    try managedContext.save()
+                    return true
                     
-                    managedContext.delete(employee)
-                    
-                    do {
-                        try managedContext.save()
-                        return true
-                        
-                    } catch {
-                        let saveError = error as NSError
-                        print(saveError)
-                    }
+                } catch {
+                    let saveError = error as NSError
+                    print(saveError)
                 }
-                
-            } catch {
-                let fetchError = error as NSError
-                print(fetchError)
             }
-            return false
+            
+        } catch {
+            let fetchError = error as NSError
+            print(fetchError)
         }
+        return false
+    }
 }

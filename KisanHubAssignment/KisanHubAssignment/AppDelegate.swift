@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import GoogleMaps
 
+let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
